@@ -1,0 +1,304 @@
+<!DOCTYPE html><html><head>
+            <style>
+                body {
+                    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+                    background-color: #fafafa;
+                    color: #333;
+                    margin: 0;
+                    padding: 40px;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    min-height: 100vh;
+                }
+                table {
+                    width: 90%;
+                    max-width: 1200px;
+                    border-collapse: collapse;
+                    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+                    background-color: #fff;
+                    border-radius: 10px;
+                    overflow: hidden;
+                }
+                th, td {
+                    padding: 18px 24px;
+                    text-align: left;
+                    border-bottom: 1px solid #eaeaea;
+                    position: relative;
+                    transition: background-color 0.3s ease;
+                }
+                th {
+                    background-color: #f0f0f0;
+                    font-weight: 600;
+                    text-transform: uppercase;
+                    letter-spacing: 0.05em;
+                }
+                tr:hover {
+                    background-color: #f9f9f9;
+                }
+                a {
+                    color: #007aff;
+                    text-decoration: none;
+                    transition: color 0.3s ease;
+                }
+                a:visited {
+                    color: #800080; /* 已访问链接的颜色 */
+                }
+                a:hover {
+                    color: #0056b3;
+                    text-decoration: underline;
+                }
+                th::after {
+                    content: '';
+                    position: absolute;
+                    top: 0;
+                    right: 0;
+                    width: 8px;
+                    height: 100%;
+                    cursor: col-resize;
+                    background-color: #e0e0e0;
+                    transition: background-color 0.3s ease;
+                }
+                th:hover::after {
+                    background-color: #c0c0c0;
+                }
+                /* 为第一行添加绿色底色 */
+                tr:first-child th {
+                    background-color: #81c784;
+                    color: white;
+                }
+                /* 为第一列添加绿色底色 */
+                td:first-child, th:first-child {
+                    background-color: #81c784;
+                    color: white;
+                }
+            </style>
+            </head><body><table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>链接</th>
+      <th>发布时间</th>
+      <th>点赞数</th>
+      <th>评论数</th>
+      <th>采集时间</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td><a href="https://www.douyin.com/discover?modal_id=7498009198933871883" target="_blank" onclick="logLinkClick(\'https://www.douyin.com/discover?modal_id=7498009198933871883\'); return false;">https://www.douyin.com/discover?modal_id=7498009198933871883</a></td>
+      <td>· 2天前</td>
+      <td>184</td>
+      <td>116</td>
+      <td>2025年04月29日 23:45</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td><a href="https://www.douyin.com/discover?modal_id=7498292186421759282" target="_blank" onclick="logLinkClick(\'https://www.douyin.com/discover?modal_id=7498292186421759282\'); return false;">https://www.douyin.com/discover?modal_id=7498292186421759282</a></td>
+      <td>· 1天前</td>
+      <td>1.7万</td>
+      <td>392</td>
+      <td>2025年04月29日 23:45</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td><a href="https://www.douyin.com/discover?modal_id=7497881232441707785" target="_blank" onclick="logLinkClick(\'https://www.douyin.com/discover?modal_id=7497881232441707785\'); return false;">https://www.douyin.com/discover?modal_id=7497881232441707785</a></td>
+      <td>· 2天前</td>
+      <td>2950</td>
+      <td>2807</td>
+      <td>2025年04月29日 23:45</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td><a href="https://www.douyin.com/discover?modal_id=7497469605469031691" target="_blank" onclick="logLinkClick(\'https://www.douyin.com/discover?modal_id=7497469605469031691\'); return false;">https://www.douyin.com/discover?modal_id=7497469605469031691</a></td>
+      <td>· 3天前</td>
+      <td>1023</td>
+      <td>886</td>
+      <td>2025年04月29日 23:46</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td><a href="https://www.douyin.com/discover?modal_id=7498344525976866105" target="_blank" onclick="logLinkClick(\'https://www.douyin.com/discover?modal_id=7498344525976866105\'); return false;">https://www.douyin.com/discover?modal_id=7498344525976866105</a></td>
+      <td>· 5小时前</td>
+      <td>8289</td>
+      <td>435</td>
+      <td>2025年04月29日 23:47</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td><a href="https://www.douyin.com/discover?modal_id=7497979214617480460" target="_blank" onclick="logLinkClick(\'https://www.douyin.com/discover?modal_id=7497979214617480460\'); return false;">https://www.douyin.com/discover?modal_id=7497979214617480460</a></td>
+      <td>· 2天前</td>
+      <td>106</td>
+      <td>142</td>
+      <td>2025年04月29日 23:47</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td><a href="https://www.douyin.com/discover?modal_id=7496550276825664826" target="_blank" onclick="logLinkClick(\'https://www.douyin.com/discover?modal_id=7496550276825664826\'); return false;">https://www.douyin.com/discover?modal_id=7496550276825664826</a></td>
+      <td>· 5天前</td>
+      <td>7.6万</td>
+      <td>3760</td>
+      <td>2025年04月29日 23:56</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td><a href="https://www.douyin.com/discover?modal_id=7496450297116790073" target="_blank" onclick="logLinkClick(\'https://www.douyin.com/discover?modal_id=7496450297116790073\'); return false;">https://www.douyin.com/discover?modal_id=7496450297116790073</a></td>
+      <td>· 6天前</td>
+      <td>1.3万</td>
+      <td>932</td>
+      <td>2025年04月29日 23:57</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td><a href="https://www.douyin.com/discover?modal_id=7497914273206717730" target="_blank" onclick="logLinkClick(\'https://www.douyin.com/discover?modal_id=7497914273206717730\'); return false;">https://www.douyin.com/discover?modal_id=7497914273206717730</a></td>
+      <td>· 2天前</td>
+      <td>258</td>
+      <td>212</td>
+      <td>2025年04月29日 23:58</td>
+    </tr>
+    <tr>
+      <th>9</th>
+      <td><a href="https://www.douyin.com/discover?modal_id=7498585557997669647" target="_blank" onclick="logLinkClick(\'https://www.douyin.com/discover?modal_id=7498585557997669647\'); return false;">https://www.douyin.com/discover?modal_id=7498585557997669647</a></td>
+      <td>· 11小时前</td>
+      <td>376</td>
+      <td>241</td>
+      <td>2025年04月29日 23:59</td>
+    </tr>
+    <tr>
+      <th>10</th>
+      <td><a href="https://www.douyin.com/discover?modal_id=7498324561789340940" target="_blank" onclick="logLinkClick(\'https://www.douyin.com/discover?modal_id=7498324561789340940\'); return false;">https://www.douyin.com/discover?modal_id=7498324561789340940</a></td>
+      <td>· 1天前</td>
+      <td>148</td>
+      <td>277</td>
+      <td>2025年04月30日 00:00</td>
+    </tr>
+    <tr>
+      <th>11</th>
+      <td><a href="https://www.douyin.com/discover?modal_id=7497914301065497893" target="_blank" onclick="logLinkClick(\'https://www.douyin.com/discover?modal_id=7497914301065497893\'); return false;">https://www.douyin.com/discover?modal_id=7497914301065497893</a></td>
+      <td>· 2天前</td>
+      <td>5.2万</td>
+      <td>7939</td>
+      <td>2025年04月30日 00:02</td>
+    </tr>
+    <tr>
+      <th>12</th>
+      <td><a href="https://www.douyin.com/discover?modal_id=7497125645891243304" target="_blank" onclick="logLinkClick(\'https://www.douyin.com/discover?modal_id=7497125645891243304\'); return false;">https://www.douyin.com/discover?modal_id=7497125645891243304</a></td>
+      <td>· 4天前</td>
+      <td>301</td>
+      <td>244</td>
+      <td>2025年04月30日 00:02</td>
+    </tr>
+    <tr>
+      <th>13</th>
+      <td><a href="https://www.douyin.com/discover?modal_id=7498295139438759180" target="_blank" onclick="logLinkClick(\'https://www.douyin.com/discover?modal_id=7498295139438759180\'); return false;">https://www.douyin.com/discover?modal_id=7498295139438759180</a></td>
+      <td>· 1天前</td>
+      <td>2889</td>
+      <td>515</td>
+      <td>2025年04月30日 00:10</td>
+    </tr>
+    <tr>
+      <th>14</th>
+      <td><a href="https://www.douyin.com/discover?modal_id=7498313811012914492" target="_blank" onclick="logLinkClick(\'https://www.douyin.com/discover?modal_id=7498313811012914492\'); return false;">https://www.douyin.com/discover?modal_id=7498313811012914492</a></td>
+      <td>· 1天前</td>
+      <td>1919</td>
+      <td>211</td>
+      <td>2025年04月30日 00:12</td>
+    </tr>
+    <tr>
+      <th>15</th>
+      <td><a href="https://www.douyin.com/discover?modal_id=7497900142847151375" target="_blank" onclick="logLinkClick(\'https://www.douyin.com/discover?modal_id=7497900142847151375\'); return false;">https://www.douyin.com/discover?modal_id=7497900142847151375</a></td>
+      <td>· 2天前</td>
+      <td>216</td>
+      <td>146</td>
+      <td>2025年04月30日 00:14</td>
+    </tr>
+    <tr>
+      <th>16</th>
+      <td><a href="https://www.douyin.com/discover?modal_id=7497806357107805499" target="_blank" onclick="logLinkClick(\'https://www.douyin.com/discover?modal_id=7497806357107805499\'); return false;">https://www.douyin.com/discover?modal_id=7497806357107805499</a></td>
+      <td>· 2天前</td>
+      <td>1319</td>
+      <td>291</td>
+      <td>2025年04月30日 00:16</td>
+    </tr>
+    <tr>
+      <th>17</th>
+      <td><a href="https://www.douyin.com/discover?modal_id=7498542581049052427" target="_blank" onclick="logLinkClick(\'https://www.douyin.com/discover?modal_id=7498542581049052427\'); return false;">https://www.douyin.com/discover?modal_id=7498542581049052427</a></td>
+      <td>· 14小时前</td>
+      <td>478</td>
+      <td>1052</td>
+      <td>2025年04月30日 00:20</td>
+    </tr>
+    <tr>
+      <th>18</th>
+      <td><a href="https://www.douyin.com/discover?modal_id=7498645283660729641" target="_blank" onclick="logLinkClick(\'https://www.douyin.com/discover?modal_id=7498645283660729641\'); return false;">https://www.douyin.com/discover?modal_id=7498645283660729641</a></td>
+      <td>· 4小时前</td>
+      <td>2042</td>
+      <td>161</td>
+      <td>2025年04月30日 00:23</td>
+    </tr>
+    <tr>
+      <th>19</th>
+      <td><a href="https://www.douyin.com/discover?modal_id=7496468992131960123" target="_blank" onclick="logLinkClick(\'https://www.douyin.com/discover?modal_id=7496468992131960123\'); return false;">https://www.douyin.com/discover?modal_id=7496468992131960123</a></td>
+      <td>· 6天前</td>
+      <td>3787</td>
+      <td>166</td>
+      <td>2025年04月30日 00:26</td>
+    </tr>
+    <tr>
+      <th>20</th>
+      <td><a href="https://www.douyin.com/discover?modal_id=7498150433786907962" target="_blank" onclick="logLinkClick(\'https://www.douyin.com/discover?modal_id=7498150433786907962\'); return false;">https://www.douyin.com/discover?modal_id=7498150433786907962</a></td>
+      <td>· 1天前</td>
+      <td>102</td>
+      <td>100</td>
+      <td>2025年04月30日 00:29</td>
+    </tr>
+    <tr>
+      <th>21</th>
+      <td><a href="https://www.douyin.com/discover?modal_id=7496929410681212212" target="_blank" onclick="logLinkClick(\'https://www.douyin.com/discover?modal_id=7496929410681212212\'); return false;">https://www.douyin.com/discover?modal_id=7496929410681212212</a></td>
+      <td>· 4天前</td>
+      <td>462</td>
+      <td>119</td>
+      <td>2025年04月30日 00:31</td>
+    </tr>
+  </tbody>
+</table>
+            <script>
+                function logLinkClick(url) {
+                    console.log('点击了链接:', url);
+                    var newTab = window.open(url, '_blank');
+                    if (newTab) {
+                        newTab.blur();
+                        window.focus();
+                    }
+                    return false;
+                }
+        
+                const tableHeaders = document.querySelectorAll('th');
+                tableHeaders.forEach(header => {
+                    let isResizing = false;
+                    let startX, startWidth;
+        
+                    header.addEventListener('mousedown', (e) => {
+                        isResizing = true;
+                        startX = e.clientX;
+                        startWidth = header.offsetWidth;
+                        document.body.style.cursor = 'col-resize';
+                    });
+        
+                    document.addEventListener('mousemove', (e) => {
+                        if (isResizing) {
+                            const dx = e.clientX - startX;
+                            header.style.width = (startWidth + dx) + 'px';
+                        }
+                    });
+        
+                    document.addEventListener('mouseup', () => {
+                        if (isResizing) {
+                            isResizing = false;
+                            document.body.style.cursor = 'default';
+                        }
+                    });
+                });
+            </script>
+            </body></html>
