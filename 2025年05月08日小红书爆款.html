@@ -1,0 +1,568 @@
+
+        <!DOCTYPE html>
+        <html>
+        <head>
+            <meta charset="UTF-8">
+            <meta name="viewport" content="width=device-width, initial-scale=1.0">
+            
+        <style>
+            body {
+                font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+                background-color: #f9f9f9;
+                color: #333;
+                margin: 0;
+                padding: 0;
+                overflow-x: hidden;
+            }
+
+            .main-title {
+                text-align: center;
+                font-size: 36px;
+                font-weight: bold;
+                color: #000000;
+                margin: 20px 0 15px;
+                padding: 10px;
+                letter-spacing: 1px;
+            }
+
+            .header {
+                background-color: #4caf50;
+                color: white;
+                text-align: center;
+                padding: 12px 20px;
+                margin-bottom: 0;
+                box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            }
+
+            .header h1 {
+                margin: 0;
+                font-size: 22px;
+                font-weight: bold;
+            }
+
+            .table-container {
+                width: 98%;
+                margin: 0 auto 30px;
+                overflow: auto;
+                max-height: 75vh;
+                position: relative;
+                box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+                border-radius: 8px;
+                overflow-x: auto;
+            }
+
+            .styled-table {
+                border-collapse: collapse;
+                width: 100%;
+                background-color: white;
+                min-width: 600px;
+            }
+
+            .styled-table thead {
+                position: sticky;
+                top: 0;
+                z-index: 10;
+            }
+
+            .styled-table th,
+            .styled-table td {
+                border: 1px solid #eaeaea;
+                padding: 12px 15px;
+                vertical-align: middle !important;
+            }
+
+            .styled-table th {
+                background-color: #4caf50;
+                color: white;
+                font-weight: bold;
+                text-transform: uppercase;
+                letter-spacing: 0.05em;
+                font-size: 16px;
+                text-align: center !important;
+                position: sticky;
+                top: 0;
+                height: 50px;
+                padding: 15px !important;
+            }
+
+            .styled-table tr:nth-child(even) {
+                background-color: #fafafa;
+            }
+
+            .styled-table tr:hover {
+                background-color: #f1f8e9;
+                transition: background-color 0.3s ease;
+            }
+
+            .styled-table a {
+                color: #4caf50;
+                text-decoration: none;
+                transition: color 0.3s ease;
+                word-break: break-all;
+                font-size: 14px;
+            }
+
+            .styled-table a:hover {
+                color: #388e3c;
+                text-decoration: underline;
+            }
+
+            .styled-table a:visited {
+                color: #9c27b0;
+            }
+
+            /* 列宽设置 */
+            .styled-table td:nth-child(1),
+            .styled-table th:nth-child(1) { /* 标题列 */
+                width: 220px;
+                max-width: 220px;
+                word-break: break-word;
+                text-align: left;
+                padding-left: 20px;
+            }
+
+            .styled-table td:nth-child(2),
+            .styled-table th:nth-child(2) { /* 正文列 */
+                width: 280px;
+                max-width: 280px;
+                word-break: break-word;
+                text-align: left;
+            }
+
+            .styled-table td:nth-child(3),
+            .styled-table th:nth-child(3) { /* 作者列 */
+                width: 120px;
+                max-width: 120px;
+                text-align: left;
+            }
+
+            .styled-table td:nth-child(4),
+            .styled-table th:nth-child(4) { /* 时间列 */
+                width: 100px;
+                max-width: 100px;
+                text-align: left;
+            }
+
+            .styled-table td:nth-child(5),
+            .styled-table th:nth-child(5) { /* 链接列 */
+                width: 150px;
+                max-width: 150px;
+                text-align: left;
+            }
+
+            /* 数值列 */
+            .styled-table td:nth-child(6),
+            .styled-table td:nth-child(7),
+            .styled-table td:nth-child(8),
+            .styled-table th:nth-child(6),
+            .styled-table th:nth-child(7),
+            .styled-table th:nth-child(8) {
+                width: 80px;
+                max-width: 80px;
+                text-align: center !important;
+            }
+
+            .content-wrapper {
+                max-width: 1400px;
+                margin: 0 auto;
+                padding: 0 20px;
+            }
+
+            @media (max-width: 768px) {
+                .styled-table {
+                    font-size: 14px;
+                }
+                .styled-table th,
+                .styled-table td {
+                    padding: 8px 10px;
+                }
+                .styled-table td:nth-child(1),
+                .styled-table th:nth-child(1) {
+                    width: 150px;
+                }
+                .styled-table td:nth-child(2),
+                .styled-table th:nth-child(2) {
+                    width: 180px;
+                }
+                .styled-table td:nth-child(3),
+                .styled-table th:nth-child(3) {
+                    width: 80px;
+                }
+                .styled-table td:nth-child(4),
+                .styled-table th:nth-child(4) {
+                    width: 80px;
+                }
+                .styled-table td:nth-child(5),
+                .styled-table th:nth-child(5) {
+                    width: 120px;
+                }
+                .styled-table td:nth-child(6),
+                .styled-table td:nth-child(7),
+                .styled-table td:nth-child(8),
+                .styled-table th:nth-child(6),
+                .styled-table th:nth-child(7),
+                .styled-table th:nth-child(8) {
+                    width: 60px;
+                }
+            }
+        </style>
+        
+        </head>
+        <body>
+            <div class="content-wrapper">
+                <div class="main-title">阳光卓越教辅-用AI为教辅赋能</div>
+                <div class="header">
+                    <h1>2025年05月08日，近期爆款笔记收集</h1>
+                </div>
+                <div class="table-container">
+                    <table border="1" class="dataframe styled-table">
+  <thead>
+    <tr style="text-align: right;">
+      <th style="text-align:center;font-weight:bold;font-size:16px">标题</th>
+      <th style="text-align:center;font-weight:bold;font-size:16px">正文</th>
+      <th style="text-align:center;font-weight:bold;font-size:16px">作者</th>
+      <th style="text-align:center;font-weight:bold;font-size:16px">时间</th>
+      <th style="text-align:center;font-weight:bold;font-size:16px">链接</th>
+      <th style="text-align:center;font-weight:bold;font-size:16px">点赞</th>
+      <th style="text-align:center;font-weight:bold;font-size:16px">收藏</th>
+      <th style="text-align:center;font-weight:bold;font-size:16px">评论</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>NaN</td>
+      <td>我的家庭，孩子二年级，朋友家庭，孩子幼儿园中班\n举例子，1.早上约好一个小时后出发，到点了，他们说，再等我们15分钟。我们说好，又等了20分钟，仍然没出来，我们先走。他们又过了20分钟才出发！\n2.我们俩都是j人，一天的行程规划了3件事，可是对方总是拖时间，导致当天只能去一个景点。剩下两件事第二天再去，导致最后没完成所有计划！\n3.吃饭，对方小朋友不能吃辣，我说，挑俩菜免辣，对方孩子妈拒绝，必须整单免辣！\n4.后来的一天，我们就没有再在一起行动，我们出去玩，他们泡酒店。结果上午突然问我们在哪，他们家孩子尿裤子了，只带了一条裤子，让我们顺道去给他们买一条。我说我们在景点，周围是很荒凉的地方，新修的那种景点。我说方不方便定个跑腿。她说她看了，跑腿要好几十，比裤子还贵。\n5.最气的来了，早上跟我们说，孩子夜里发烧了，但是要赶火车，希望我们送他们，我想着，从酒店打车去火车站，我们给他们送上网约车吗？结果他们说，怕打车堵，准备坐地铁！让我们坐地铁送他们！整段路程大概一个半小时，而且晚上我们也要赶火车，两个火车站相距一小时车程，我们白天规划了行程，就拒绝了。\n然后！过了会儿，又联系我们，说头天吃晚饭，把包落酒店的自助餐厅了，说自己实在走不开，让我们去帮他取。我就先联系餐厅，老板说已经到店了，可以去取，我给他们打电话，说包找到了，孩子爸说他们在前台呢，自己去取，不用我去了，我听见孩子妈在电话那头，蛐蛐了两句，孩子爸就说，那你帮我们取一下吧。我就以为，他俩带着孩子，在前台约了车，挺着急的，我就使劲跑，跑回来到前台，没看见他们，给他们打电话，三位正享用酒店早餐呢！说，你等会儿啊，然后从酒店餐厅一头出来拿上包，说了句谢谢就走了！\n二编：\n1.我们家没有把柄在他们手上，就是双方孩子爸爸是同学。\n2.我们已经在痛定思痛了（不约了），同时也在反思之前带孩子跟别的朋友出去玩的时候有没有麻烦别人过，把这次的事件当成是一面镜子吧\n3.说我和队友包子的，可能是吧，我们俩认识这么长时间的朋友没几个，我认为跟他们是好朋友，我对待好朋友的原则就是，只要你要，只要我有。但是我也深信情感账户，有支取有充值。我不会随意支取我在别人那里的情感账户。他们家在我这是没余额了\n#五一假期 #假期出游 #五一分享#五一实况播报 #五一旅游</td>
+      <td>尽全力避坑的小狗屁</td>
+      <td>编辑于 1 天前 北京</td>
+      <td><a href="https://www.xiaohongshu.com/search_result/68188cb6000000002100d590?xsec_token=ABOhE80sCjS8RDp-6XNzkNJL3cWIsE0tTIgMIaXsoYWY0=&xsec_source=" target="_blank">https://www.xiaohongshu.com/search_result/68188cb6000000002100d590?xsec_token=ABOhE80sCjS8RDp-6XNzkNJL3cWIsE0tTIgMIaXsoYWY0=&xsec_source=</a></td>
+      <td>3,103</td>
+      <td>895</td>
+      <td>4,209</td>
+    </tr>
+    <tr>
+      <td>二年级，没人比我画的好了吧</td>
+      <td>#抽象 #改画 #自信小孩画画 #画画#我爱画画</td>
+      <td>馍蒸仁</td>
+      <td>2 天前 江苏</td>
+      <td><a href="https://www.xiaohongshu.com/search_result/6818833a00000000210002bb?xsec_token=ABOhE80sCjS8RDp-6XNzkNJK3yFXAVGroxhgk9I9Jel84=&xsec_source=" target="_blank">https://www.xiaohongshu.com/search_result/6818833a00000000210002bb?xsec_token=ABOhE80sCjS8RDp-6XNzkNJK3yFXAVGroxhgk9I9Jel84=&xsec_source=</a></td>
+      <td>7,133</td>
+      <td>969</td>
+      <td>1,525</td>
+    </tr>
+    <tr>
+      <td>五下从今天开始“三轮复习法”期末逆袭前三</td>
+      <td>五下保姆级复习计划已经给家长准备好了✅，不会带娃的家长直接抄⬆️\n📖第一轮复习：回归课本八个单元➕必背公式➕数学知识点➕应用题，逐一梳理，一天一单元，不求拉快，七个课时（5-7天）完成。\n\t\n📖第二轮复习：专项复习公式➕课本题➕应用题➕易错题。\n1⃣经典应用题课文部分以练促讲，给学生分发练习题，在校完成，随堂精讲。\n2⃣练习题打印成册，一次性发给学生留存，要求一天两篇，最后阶段集中讲评。\n✨资料有整理在复习资料包中\n\t\n📖第三轮复习：刷试卷试卷在精不在多。\n1⃣我一般会利用一周的两个午管或连堂计时做两套试卷，逐一批改登分。\n2⃣周末一套不含作文的试卷。其他试卷抽题做，不需要全做刷题。\n✨试卷资料也在复习资料包中。祝大家复习顺利！\n#五年级 #五年级下册 #五年级数学  #五年级语文    #五年级语文怎么学   #必背知识点    #基础知识 #重点 #小学学习资料 #小学数学公式 #小学数学思维训练 #小红书游学团 #别人放假我学习</td>
+      <td>光光爸爸数学思维</td>
+      <td>3 天前 吉林</td>
+      <td><a href="https://www.xiaohongshu.com/search_result/68177c51000000002002a9de?xsec_token=ABOhBHL8LmSoD04IFVqUkvV42SKXPrac_z9UfQJ6dXuFE=&xsec_source=" target="_blank">https://www.xiaohongshu.com/search_result/68177c51000000002002a9de?xsec_token=ABOhBHL8LmSoD04IFVqUkvV42SKXPrac_z9UfQJ6dXuFE=&xsec_source=</a></td>
+      <td>3,229</td>
+      <td>4,869</td>
+      <td>1,001</td>
+    </tr>
+    <tr>
+      <td>大班小朋友写一年级下册的生字</td>
+      <td>#一年级 #小学语文 #练字 #每天坚持练字 #握笔姿势 #少儿硬笔书法</td>
+      <td>罗仕涵(大班）</td>
+      <td>3 天前 广东</td>
+      <td><a href="https://www.xiaohongshu.com/search_result/681793ec000000002100b8ab?xsec_token=ABOhBHL8LmSoD04IFVqUkvV8mJ9K5lujA7ZR2ejaFANcw=&xsec_source=" target="_blank">https://www.xiaohongshu.com/search_result/681793ec000000002100b8ab?xsec_token=ABOhBHL8LmSoD04IFVqUkvV8mJ9K5lujA7ZR2ejaFANcw=&xsec_source=</a></td>
+      <td>1,185</td>
+      <td>539</td>
+      <td>726</td>
+    </tr>
+    <tr>
+      <td>老师刚发的最好的二年级逆袭规划（详细版）</td>
+      <td>✨二年级分水岭！一定要合理安排时间，不可盲目提海战术！要学着做计划，每日计划和每周计划，利用晚上碎片时间，重视薄弱的，巩固练习🔥\n#学习规划  #小学学习资料  #二年级  #二年级数学  #知识点总结  #小学数学  #小学数学思维训练  #应用题  #家长收藏孩子受益  #小学数学易错题 #二年级语文 #二年级下册语文#二年级下册数学</td>
+      <td>🌟二年级晴晴老师</td>
+      <td>编辑于 2 天前 山东</td>
+      <td><a href="https://www.xiaohongshu.com/search_result/68134861000000000d0156ca?xsec_token=AB5tFheNJKqKx5eWGp9Dm404PyyGeBpkHznKe5Nk9-Ry8=&xsec_source=" target="_blank">https://www.xiaohongshu.com/search_result/68134861000000000d0156ca?xsec_token=AB5tFheNJKqKx5eWGp9Dm404PyyGeBpkHznKe5Nk9-Ry8=&xsec_source=</a></td>
+      <td>1,235</td>
+      <td>2,050</td>
+      <td>567</td>
+    </tr>
+    <tr>
+      <td>三下从 51 开始“三轮复习法”期末逆袭前三</td>
+      <td>📖第一轮复习：回归课本八个单元➕识字表➕写字表➕词语表，逐一梳理，一天一单元，不求拉快，七个课时（5-7天）完成。\n📖第二轮复习：专项复习字词➕句子➕课文➕阅读（文言文、现代文）➕作文。\n1⃣字词句课文部分以练促讲，给学生分发练习题，在校完成，随堂精讲。\n2⃣阅读题打印成册，一次性发给学生留存，要求一天两篇，最后阶段集中讲评。\n3⃣作文方面，依据写作提示单和作文本的旧作复习，单独找几篇优秀作文读记。\n✨资料有整理在复习资料包中📖第三轮复习：刷试卷试卷在精不在多。\n1⃣我一般会利用一周的两个午管或连堂计时做两套试卷，逐一批改登分。\n2⃣周末一套不含作文的试卷。其他试卷抽题做，不需要全做刷题。\n✨试卷资料也在复习资料包中。祝大家复习顺利！\n#小学语文    #小学语文怎么学    #小学作文    #语文    #三年级语文    #期末复习    #小学语文期末复习    #知识点总结    #家长收藏孩子受益    #三年级    #五一假期    #小红书游学团 #别人放假我学习</td>
+      <td>妙妙爸爸数学思维</td>
+      <td>6 天前 吉林</td>
+      <td><a href="https://www.xiaohongshu.com/search_result/681369ed0000000023016eba?xsec_token=AB5tFheNJKqKx5eWGp9Dm4068gTURlDht-oK8wkqsp6Jw=&xsec_source=" target="_blank">https://www.xiaohongshu.com/search_result/681369ed0000000023016eba?xsec_token=AB5tFheNJKqKx5eWGp9Dm4068gTURlDht-oK8wkqsp6Jw=&xsec_source=</a></td>
+      <td>1,689</td>
+      <td>2,337</td>
+      <td>498</td>
+    </tr>
+    <tr>
+      <td>三年级家长千万别佛系，真正的较量才刚开始</td>
+      <td>#知识点总结 #小学语文 #小学语文怎么学 #家长收藏孩子受益 #三年级 #语文 #数学 #小学学习资料 #期末复习  #高频考点 #小学生的学习习惯</td>
+      <td>沫沫老师</td>
+      <td>编辑于 1 天前 山东</td>
+      <td><a href="https://www.xiaohongshu.com/search_result/68107670000000002300f8d8?xsec_token=AB5ruSQve4HsnBt2AUiS9RdN79qxCMjV5aaNiaJ1nHBtk=&xsec_source=" target="_blank">https://www.xiaohongshu.com/search_result/68107670000000002300f8d8?xsec_token=AB5ruSQve4HsnBt2AUiS9RdN79qxCMjV5aaNiaJ1nHBtk=&xsec_source=</a></td>
+      <td>1,437</td>
+      <td>2,269</td>
+      <td>453</td>
+    </tr>
+    <tr>
+      <td>四年级逆袭计划！</td>
+      <td>#四年级 #学霸秘籍 #四年级下册语文 #四年级下册数学 #四年级下册英语 #四年级家长 #家有小学生#小学语文怎么学 #提高孩子学习成绩</td>
+      <td>星星四年级</td>
+      <td>编辑于 1 天前 广西</td>
+      <td><a href="https://www.xiaohongshu.com/search_result/68170c36000000002202cc9c?xsec_token=ABOhBHL8LmSoD04IFVqUkvV2lkCwgJlv20ZN3MTUDbewE=&xsec_source=" target="_blank">https://www.xiaohongshu.com/search_result/68170c36000000002202cc9c?xsec_token=ABOhBHL8LmSoD04IFVqUkvV2lkCwgJlv20ZN3MTUDbewE=&xsec_source=</a></td>
+      <td>519</td>
+      <td>819</td>
+      <td>385</td>
+    </tr>
+    <tr>
+      <td>假如让六年级孩子从5月7日开始背默小升初</td>
+      <td>#六年级 #六年级下册 #小升初英语 #小升初语文 #小升初数学 #知识点总结 #必背古诗 #必背公式#英语单词 #家长收藏孩子受益</td>
+      <td>倍贝图书</td>
+      <td>1 天前 广东</td>
+      <td><a href="https://www.xiaohongshu.com/search_result/6819d9620000000023015208?xsec_token=ABnNDlSzIxclF85LV-RsHskmaf-d5ILCMpFUQ2W9MdNik=&xsec_source=" target="_blank">https://www.xiaohongshu.com/search_result/6819d9620000000023015208?xsec_token=ABnNDlSzIxclF85LV-RsHskmaf-d5ILCMpFUQ2W9MdNik=&xsec_source=</a></td>
+      <td>596</td>
+      <td>762</td>
+      <td>374</td>
+    </tr>
+    <tr>
+      <td>假如让六年级孩子从5月1日开始背诵小升初</td>
+      <td>#六年级 #六年级下册 #小升初语文 #小升初英语 #小升初数学 #必背古诗 #小学数学公式 #英语词汇 #知识点总结 #家长收藏孩子受益</td>
+      <td>倍贝图书</td>
+      <td>7 天前 广东</td>
+      <td><a href="https://www.xiaohongshu.com/search_result/6811fc6d000000002202dbdd?xsec_token=ABmTMbEAqpMOaFlXdcKNg19VdDybqY8tgA_ecSMvG0TT0=&xsec_source=" target="_blank">https://www.xiaohongshu.com/search_result/6811fc6d000000002202dbdd?xsec_token=ABmTMbEAqpMOaFlXdcKNg19VdDybqY8tgA_ecSMvG0TT0=&xsec_source=</a></td>
+      <td>379</td>
+      <td>528</td>
+      <td>260</td>
+    </tr>
+    <tr>
+      <td>教育局最新通知来了！心疼五年级的孩子🔥</td>
+      <td>#五年级#五年级下册 #小学生的学习习惯 #提高孩子学习成绩 #学霸养成 #学习规划 #五年级下学期 #激励孩子进步 #小学学习资料 #五年级家长</td>
+      <td>叶老师小学资料</td>
+      <td>编辑于 昨天 14:54 北京</td>
+      <td><a href="https://www.xiaohongshu.com/search_result/6818c19100000000220287d4?xsec_token=ABOhE80sCjS8RDp-6XNzkNJL77pu_Pmc85uxnKrBRh22Q=&xsec_source=" target="_blank">https://www.xiaohongshu.com/search_result/6818c19100000000220287d4?xsec_token=ABOhE80sCjS8RDp-6XNzkNJL77pu_Pmc85uxnKrBRh22Q=&xsec_source=</a></td>
+      <td>400</td>
+      <td>583</td>
+      <td>219</td>
+    </tr>
+    <tr>
+      <td>【详细版】这是我见过最好的二年级规划🔥</td>
+      <td>#家长收藏孩子受益 #小学生的学习习惯 #提高孩子学习成绩 #小学学习资料 #学习规划 #二年级下册 #二下语文 #二下数学 #小学生专注力 #学霸养成</td>
+      <td>有方法的胡老师</td>
+      <td>4 天前 山东</td>
+      <td><a href="https://www.xiaohongshu.com/search_result/6815a5d90000000021008e8e?xsec_token=ABsI4HDQ3Cst0CQii9JSkzmqHI5KUtl5SeprcXL2fkOi8=&xsec_source=" target="_blank">https://www.xiaohongshu.com/search_result/6815a5d90000000021008e8e?xsec_token=ABsI4HDQ3Cst0CQii9JSkzmqHI5KUtl5SeprcXL2fkOi8=&xsec_source=</a></td>
+      <td>817</td>
+      <td>1,107</td>
+      <td>200</td>
+    </tr>
+    <tr>
+      <td>三年级家长千万别佛系，真正的较量才刚开始</td>
+      <td>#知识点总结  #家长收藏孩子受益  #小学语文  #小学语文怎么学  #小学作业  #语文  #三年级语文  #期末复习  #小学语文期末复习  #三年级</td>
+      <td>玥玥老师</td>
+      <td>编辑于 6 天前 江苏</td>
+      <td><a href="https://www.xiaohongshu.com/search_result/68105e08000000002300f97d?xsec_token=AB5ruSQve4HsnBt2AUiS9RdJETXMTdLK9kRHLSTDIcFV8=&xsec_source=" target="_blank">https://www.xiaohongshu.com/search_result/68105e08000000002300f97d?xsec_token=AB5ruSQve4HsnBt2AUiS9RdJETXMTdLK9kRHLSTDIcFV8=&xsec_source=</a></td>
+      <td>693</td>
+      <td>887</td>
+      <td>179</td>
+    </tr>
+    <tr>
+      <td>这是目前见过贼牛的四年级逆袭规划（详细版</td>
+      <td>💡四年级的分水岭！一定要合理安排时间，不可盲目题海战术！要学习做计划，每日计划和每周计划～利用好晚上的碎片时间！重视薄弱点，巩固练习‼️\n#小学数学公式 #小学数学易错题 #小学数学 #家长收藏孩子受益 #小学学习资料 #四年级 #四年级数学 #四年级下册数学 #小学数学思维训练 #四下数学  #易错题 #高频考点 #家长收藏孩子受益 #应用题</td>
+      <td>潘潘学姐教育咨询</td>
+      <td>编辑于 1 天前 江苏</td>
+      <td><a href="https://www.xiaohongshu.com/search_result/6808eaa7000000001d004b3c?xsec_token=ABiPfHoG4q5-O1OjQNdvE2WNtn5PfH61oN2JJDDZ-qGdY=&xsec_source=" target="_blank">https://www.xiaohongshu.com/search_result/6808eaa7000000001d004b3c?xsec_token=ABiPfHoG4q5-O1OjQNdvE2WNtn5PfH61oN2JJDDZ-qGdY=&xsec_source=</a></td>
+      <td>201</td>
+      <td>407</td>
+      <td>176</td>
+    </tr>
+    <tr>
+      <td>上海二年级｜公办转国际一年，体制外优缺点？</td>
+      <td>下集+5.7晚上7点的直播预告来啦～#家有小学生 #卷娃不如卷自己 #教育即生活 #英语学习</td>
+      <td>平平无奇的小周</td>
+      <td>2 天前 上海</td>
+      <td><a href="https://www.xiaohongshu.com/search_result/68189f9d000000002301028f?xsec_token=ABOhE80sCjS8RDp-6XNzkNJEH5-7eVPpXWqYbWKxN2588=&xsec_source=" target="_blank">https://www.xiaohongshu.com/search_result/68189f9d000000002301028f?xsec_token=ABOhE80sCjS8RDp-6XNzkNJEH5-7eVPpXWqYbWKxN2588=&xsec_source=</a></td>
+      <td>2,061</td>
+      <td>553</td>
+      <td>158</td>
+    </tr>
+    <tr>
+      <td>五年级近视275度👀| 跟着做飞行员护眼操✈️</td>
+      <td>芝芝👧🏻两年前开始近视\n现在五年级度数已经到了275度😵‍💫\n像她这样喜欢躺在床上🛏️玩手机📱\n做作业会趴着的小朋友\n快来跟芝芝一起做护眼操吧👍🏻\n0难度❗\n有效护眼❗❗❗\n1. 快速眨眼\n2. 飞行员米字操\n3. 用眼画圈\n4. 单眼训练\n5. 热敷眼睛\n平时多吃葡萄🍇蓝莓🫐胡萝卜🥕也有帮助哦\n你们都近视吗❓\n#小学生 #10后 #五年级 #日常 #vlog #护眼 #护眼操 #近视 #妈妈的厉害藏不住了 #小学生视力 #爱护眼睛 #儿童护眼 #保护视力健康 #孩子视力\n#你们都近视多少度了❓[投票]#</td>
+      <td>芝芝麻麻</td>
+      <td>编辑于 2 天前 浙江</td>
+      <td><a href="https://www.xiaohongshu.com/search_result/6818381b0000000021004ec8?xsec_token=ABOhE80sCjS8RDp-6XNzkNJAx6-nJ-5w83_Y3IpkA5Hjo=&xsec_source=" target="_blank">https://www.xiaohongshu.com/search_result/6818381b0000000021004ec8?xsec_token=ABOhE80sCjS8RDp-6XNzkNJAx6-nJ-5w83_Y3IpkA5Hjo=&xsec_source=</a></td>
+      <td>3,565</td>
+      <td>4,207</td>
+      <td>158</td>
+    </tr>
+    <tr>
+      <td>四年级下册语文五一假期作业每日一练✅‼️💯</td>
+      <td>#四年级下册 #四年级语文 #五一假期 #每日一练 #小学语文怎么学 #基础知识练习 #课文重点</td>
+      <td>蘑菇老师🍄</td>
+      <td>编辑于 7 天前 山西</td>
+      <td><a href="https://www.xiaohongshu.com/search_result/680ae4e4000000001d01d525?xsec_token=ABE2psQd7zDLL2CeosiCnOXqBFo5Pi7VlH-aHcrKBVSfI=&xsec_source=" target="_blank">https://www.xiaohongshu.com/search_result/680ae4e4000000001d01d525?xsec_token=ABE2psQd7zDLL2CeosiCnOXqBFo5Pi7VlH-aHcrKBVSfI=&xsec_source=</a></td>
+      <td>310</td>
+      <td>293</td>
+      <td>148</td>
+    </tr>
+    <tr>
+      <td>拿到了火箭班小升初语文作文押题，就这18篇</td>
+      <td>年年押，次次中！今年的作文一定从这出！\n此贴不删，等大家考完回来报喜～\n\t\n作文是语文考试的重中之重\n表姐翻遍了近三年各个地区的小升初真题，\n其实就考四大类：人、事、物、景\n熬夜总结出这18篇范文，可作为母素材，\n毕竟万变不离其宗～\n\t\n从今天开始一个星期背3篇，\n考前正好背完！\n#六下语文 #作文范文 #备考2025小升初 #小升初语文 #小学作文 #优秀作文 #小升初语文作文 #大表姐爱学习</td>
+      <td>九思-大表姐爱学习</td>
+      <td>7 天前 河北</td>
+      <td><a href="https://www.xiaohongshu.com/search_result/6811d3b8000000002102ee13?xsec_token=ABmTMbEAqpMOaFlXdcKNg19fqjHOy60Nxq7y1IuMHsMhs=&xsec_source=" target="_blank">https://www.xiaohongshu.com/search_result/6811d3b8000000002102ee13?xsec_token=ABmTMbEAqpMOaFlXdcKNg19fqjHOy60Nxq7y1IuMHsMhs=&xsec_source=</a></td>
+      <td>1,557</td>
+      <td>1,833</td>
+      <td>145</td>
+    </tr>
+    <tr>
+      <td>张雪峰：一个合格的三下家长5-6月如何布局</td>
+      <td>对于普娃来说，小学不打好基础到了初中也很难跟得上三年级正是养成学习习惯的好时机❗️一定要好好规划～领跑全班。\n✅分享一份三年级超车经验，迷茫的家长可以直接照抄⬆️\n#三年级 #三年级数学 #三年级下册 #学习规划 #学习计划 #小学学习资料 #家长收藏孩子受益 #学霸养成 #阅读理解 #必考考点 #辣妈育儿经 #知识点总结 #家长认知决定孩子未来</td>
+      <td>张张爸爸的记录</td>
+      <td>2 天前 湖北</td>
+      <td><a href="https://www.xiaohongshu.com/search_result/6818c6c4000000000303a9e8?xsec_token=ABOhE80sCjS8RDp-6XNzkNJLimTYj-DY6qikHaALo97_A=&xsec_source=" target="_blank">https://www.xiaohongshu.com/search_result/6818c6c4000000000303a9e8?xsec_token=ABOhE80sCjS8RDp-6XNzkNJLimTYj-DY6qikHaALo97_A=&xsec_source=</a></td>
+      <td>238</td>
+      <td>390</td>
+      <td>137</td>
+    </tr>
+    <tr>
+      <td>三下数学铺砖问题全部练熟❗考试就是黑马</td>
+      <td>三年级的家长可以直接抄我的，《铺砖问题》知识点及必考考点，我已经整理好了，直接抄✅\n#三年级   #三年级数学   #三年级下册   #铺砖问题   #小学学习资料   #小学数学公式   #面积和周长   #易错题   #三年级应用题   #知识点总结</td>
+      <td>贝贝爸数学思维</td>
+      <td>7 天前 北京</td>
+      <td><a href="https://www.xiaohongshu.com/search_result/681231aa000000002001c449?xsec_token=ABvtjkodwpesdnQR5lx2zlzZIHxO06xxz15Bc0oMqCJ98=&xsec_source=" target="_blank">https://www.xiaohongshu.com/search_result/681231aa000000002001c449?xsec_token=ABvtjkodwpesdnQR5lx2zlzZIHxO06xxz15Bc0oMqCJ98=&xsec_source=</a></td>
+      <td>1,290</td>
+      <td>1,789</td>
+      <td>134</td>
+    </tr>
+    <tr>
+      <td>老师刚发的最好的二年级逆袭规划（详细版）</td>
+      <td>二年级是分水岭！一定要合理安排时间，不可盲目提海战术！要学着做计划，每日计划和每周计划，利用晚上碎片时间，重视薄弱的，巩固练习🔥\n#学习计划 #二年级下册语文 #学习规划#语文知识点 #小学数学 #知识点总结 #小学数学思维 #小学数学公式 #小学语文怎么学 #提高孩子学习成绩  #二年级下册数学 #小学数学易错题 #学霸养成 #高频考点 #二下语文期末复习 #二年级下册数学重点</td>
+      <td>班班小晗</td>
+      <td>编辑于 1 天前 湖南</td>
+      <td><a href="https://www.xiaohongshu.com/search_result/68197a72000000002102c689?xsec_token=ABnNDlSzIxclF85LV-RsHsklz4POSJb4ZlbrINm-ZGAxk=&xsec_source=" target="_blank">https://www.xiaohongshu.com/search_result/68197a72000000002102c689?xsec_token=ABnNDlSzIxclF85LV-RsHsklz4POSJb4ZlbrINm-ZGAxk=&xsec_source=</a></td>
+      <td>267</td>
+      <td>413</td>
+      <td>132</td>
+    </tr>
+    <tr>
+      <td>期中后成绩大洗pai❗️心疼今年一升二的孩子</td>
+      <td>教研组老师已经整理好了，一年级的家长直接抄我的，一下必考语文和数学重点知识及必考考点\n#一年级 #一年级下册 #一年级数学 #小学学习资料 #家长收藏孩子受益 #核心考点 #教育风向标 #期中复习 #小学语文怎么学 #小学数学公式 #一年级语文</td>
+      <td>一年级芳芳老师</td>
+      <td>编辑于 3 天前 湖南</td>
+      <td><a href="https://www.xiaohongshu.com/search_result/68077fc4000000001d024538?xsec_token=ABWbp-p5mQXClUCffElOO2NCnnfIveZIWmTvBf65wBudM=&xsec_source=" target="_blank">https://www.xiaohongshu.com/search_result/68077fc4000000001d024538?xsec_token=ABWbp-p5mQXClUCffElOO2NCnnfIveZIWmTvBf65wBudM=&xsec_source=</a></td>
+      <td>743</td>
+      <td>1,092</td>
+      <td>121</td>
+    </tr>
+    <tr>
+      <td>教育局最新通知来了！心疼四年级的孩子🔥</td>
+      <td>#四年级 #辣妈育儿经 #家庭#辣妈育儿经 #家庭教育经验分享 #家有小学生 #提高孩子学习成绩 #四年级下册 #小学语文怎么学 #四年级下学期 #激励孩子进步 #四年级家长</td>
+      <td>叶老师小学资料</td>
+      <td>编辑于 今天 01:55 北京</td>
+      <td><a href="https://www.xiaohongshu.com/search_result/681a26ad00000000230159f9?xsec_token=AB55O1dypEv39xcX757ULvcCnTYlYr8IFuqwSuEedGITA=&xsec_source=" target="_blank">https://www.xiaohongshu.com/search_result/681a26ad00000000230159f9?xsec_token=AB55O1dypEv39xcX757ULvcCnTYlYr8IFuqwSuEedGITA=&xsec_source=</a></td>
+      <td>250</td>
+      <td>338</td>
+      <td>112</td>
+    </tr>
+    <tr>
+      <td>日期应用题 星期几问题 星期问题 周期问题</td>
+      <td>如何学习星期几问题 小学数学周期问题 日期问题怎么学#小学数学 #数学思维 #二年级数学 #一年级数学 #数学启蒙 #幼小衔接 #趣味数学 #小学数学思维训练 #亲子教育 #小学数学怎么学 #思维训练 #星期几问题 你学会了吗 [PK]#</td>
+      <td>暖爸讲数学</td>
+      <td>1 天前 辽宁</td>
+      <td><a href="https://www.xiaohongshu.com/search_result/6818b3d9000000002300c059?xsec_token=ABOhE80sCjS8RDp-6XNzkNJHciUE7BUK0FkL3h2Gy-avU=&xsec_source=" target="_blank">https://www.xiaohongshu.com/search_result/6818b3d9000000002300c059?xsec_token=ABOhE80sCjS8RDp-6XNzkNJHciUE7BUK0FkL3h2Gy-avU=&xsec_source=</a></td>
+      <td>5,009</td>
+      <td>6,707</td>
+      <td>103</td>
+    </tr>
+    <tr>
+      <td>想进985、211，建议六年级就开始布局🔥</td>
+      <td>💡六年级难度增加！一定要合理安排时间\n不可盲目题海战术！要学着做计划，每日计划和每周计划~ 利用好早读 课间 午休 等碎片时间和周末！重视薄弱点，巩固复习‼️\n-\n✅六年级必备的知识点及练习以及准备好了，不会带娃学习的家长直接抄⬆️\n#六年级       #六年级数学       #六年级下册       #小学学习资料       #小学数学公式       #家长收藏孩子受益       #知识点总结       #重点       #小升初       #知识点汇总</td>
+      <td>张弛老师数学思维</td>
+      <td>6 天前 北京</td>
+      <td><a href="https://www.xiaohongshu.com/search_result/68132cc100000000230030dc?xsec_token=AB5tFheNJKqKx5eWGp9Dm402O55UrN29K6yIYlViCCD4o=&xsec_source=" target="_blank">https://www.xiaohongshu.com/search_result/68132cc100000000230030dc?xsec_token=AB5tFheNJKqKx5eWGp9Dm402O55UrN29K6yIYlViCCD4o=&xsec_source=</a></td>
+      <td>262</td>
+      <td>499</td>
+      <td>101</td>
+    </tr>
+    <tr>
+      <td>小升初倒计时，英语没进度没计划的直接抄</td>
+      <td>#小学英语怎么学 #动词的时态和语态 #小学英语语法 #小升初英语 #小升初 #六年级英语 #人教版小学英语 #家长收藏孩子受益 #必背知识点 #提高孩子学习成绩 #英语学习方法</td>
+      <td>Annie乔</td>
+      <td>编辑于 2 天前 浙江</td>
+      <td><a href="https://www.xiaohongshu.com/search_result/6810602a00000000230020c9?xsec_token=AB5ruSQve4HsnBt2AUiS9RdBLUSKArCHseha3-Cov-Sjs=&xsec_source=" target="_blank">https://www.xiaohongshu.com/search_result/6810602a00000000230020c9?xsec_token=AB5ruSQve4HsnBt2AUiS9RdBLUSKArCHseha3-Cov-Sjs=&xsec_source=</a></td>
+      <td>283</td>
+      <td>424</td>
+      <td>93</td>
+    </tr>
+    <tr>
+      <td>死磕四下阅读理解答题技巧，期末语文稳了✔</td>
+      <td>四年级下册语文，发现都不知道怎么抓阅读理解❓❗\n火箭班的老师们，连夜整理了每个单元必考阅读理解题型＋答题技巧＆公式🔥再配合练习巩固\n强制我班学生，考前刷两遍，这次单元考就没有丢分的💯\n赶紧打印给娃加强练一练吧！别再白丢分了‼️\n#阅读理解 #四年级 #知识点总结 #小学语文 #小学阅读理解 #语文阅读理解 #四年级语文 #四年级下册语文  #语文 #小学语文怎么学 #语文笔记 #阅读 #阅读理解答题技巧 #语文知识点</td>
+      <td>西西爱上学</td>
+      <td>4 天前 福建</td>
+      <td><a href="https://www.xiaohongshu.com/search_result/68163a29000000002002adb8?xsec_token=ABe3KNxOl2vPqm56uUWJAE4vDH7dROoKmNp2omHUhJSSY=&xsec_source=" target="_blank">https://www.xiaohongshu.com/search_result/68163a29000000002002adb8?xsec_token=ABe3KNxOl2vPqm56uUWJAE4vDH7dROoKmNp2omHUhJSSY=&xsec_source=</a></td>
+      <td>767</td>
+      <td>1,126</td>
+      <td>91</td>
+    </tr>
+    <tr>
+      <td>六下从5.5号开始“情景式默写”期末稳上98</td>
+      <td>#课文重点 #六年级 #六年级下册 #六年级下册语文  #小学语文怎么学  #语文知识点  #小学语文基础知识  #语文  #语文学习  #语文预习  #小学语文  #字词积累  #古诗词默写  #学习日常  #六年级语文下册  #小升初#五一假期#五一假期作业 #家长收藏孩子受益</td>
+      <td>熊熊妈妈在努力</td>
+      <td>2 天前 吉林</td>
+      <td><a href="https://www.xiaohongshu.com/search_result/681866750000000021009771?xsec_token=ABOhE80sCjS8RDp-6XNzkNJCyxzLtJytozqFtoJlLAycs=&xsec_source=" target="_blank">https://www.xiaohongshu.com/search_result/681866750000000021009771?xsec_token=ABOhE80sCjS8RDp-6XNzkNJCyxzLtJytozqFtoJlLAycs=&xsec_source=</a></td>
+      <td>153</td>
+      <td>235</td>
+      <td>90</td>
+    </tr>
+    <tr>
+      <td>三下从今天开始“三轮复习法”期末逆袭前三</td>
+      <td>🚀三年级下册保姆级复习计划已经给家长准备好了✅\n✨试卷资料也在复习资料包中。祝大家复习顺利！\n#三年级  #三年级下册  #三年级数学  #三年级语文    #必背知识点  #基础知识  #重点  #小学学习资料   #小学数学思维训练  #小红书游学团</td>
+      <td>玥玥老师</td>
+      <td>编辑于 1 天前 江苏</td>
+      <td><a href="https://www.xiaohongshu.com/search_result/6818ad08000000002202e706?xsec_token=ABOhE80sCjS8RDp-6XNzkNJIBy_9xpje2T5mgYeoyt12I=&xsec_source=" target="_blank">https://www.xiaohongshu.com/search_result/6818ad08000000002202e706?xsec_token=ABOhE80sCjS8RDp-6XNzkNJIBy_9xpje2T5mgYeoyt12I=&xsec_source=</a></td>
+      <td>290</td>
+      <td>401</td>
+      <td>83</td>
+    </tr>
+    <tr>
+      <td>火箭班统一发的，一下数学期中复习八大专项</td>
+      <td>🚀火箭班统一发的，一下数学期中复习八大专项汇总✅吃透稳上98➕#一年级数学 #一年级 #期中复习 #专项练习 #百数表练习 #小学数学易错题 #期中复习专项 #应用题 #小学数学思维训练 #高频考点#小学学习资料#期中考试 #别人放假我学习</td>
+      <td>小艾老师</td>
+      <td>编辑于 3 天前 陕西</td>
+      <td><a href="https://www.xiaohongshu.com/search_result/67f66342000000001202c882?xsec_token=ABUF2NrWb380mRGmvNmFsXyK1BhiMt6W2oTyvdvlIPdeE=&xsec_source=" target="_blank">https://www.xiaohongshu.com/search_result/67f66342000000001202c882?xsec_token=ABUF2NrWb380mRGmvNmFsXyK1BhiMt6W2oTyvdvlIPdeE=&xsec_source=</a></td>
+      <td>488</td>
+      <td>579</td>
+      <td>80</td>
+    </tr>
+    <tr>
+      <td>五年级 没报班 10点睡 稳居全班第一👌</td>
+      <td>最近这段时间在小红书上分享Molly全班前三的经验，没想到小火了一把。作为一名素人博主，我真的受宠若惊，感恩各位姐妹！\n.\n有宝妈问我，Molly这么优秀，是不是每天都回家开小灶，刷题补习？其实，Molly基本都是10点前睡觉。因为我发现，普娃逆袭的秘诀，靠的是【有效方法 + 家长的引导 + 娃的兴趣】，而不是无效刷题和补习。\n.\n今天就和大家分享Molly的【五年级学习规划】，剩半个学期想逆袭，一定好好抓起来👇\n·\n⭕️【数学：突破抽象思维+专项攻坚】🔥\n五年级数学开始接触分数、小数、几何图形等抽象概念，必须建立数学思维框架\n1️⃣抓计算：每天15道分数四则混合运算（带括号优先），连续 4 天全对，可以休息半天~\n2️⃣抓专项：每天10道应用题专项练习，用费曼学习法，勾画重点，错题要讲一遍\n⭐️重点题型：多边形面积公式推导、植树问题、追及问题\n.\n⭕️【英语：无需补课，在家自学】🔥\n1️⃣抓听读：每天听精听新概念20min，周末刷真题一套，背诵范文形成自己的写作模板\n2️⃣抓单词：新教材词汇从800猛增到1500，每天背10个，把U1-U6背诵三遍\n.\n⭕️【语文：重积累+阅读】🔥\n虽说语文不太难，但想学好也得下功夫，做好积累才是王道\n1️⃣抓基础\n🔺多音字/形近字：用127法则听写（例：龟裂/龟兹）\n🔺成语积累：按主题分类（历史典故/寓言故事）\n2️⃣抓古诗文+日积月累\n✅古诗词：《四时田园杂兴》《凉州词》《少年中国说》\n✅文言文：《杨氏之子》《自相矛盾》（掌握虚词"之""其"用法）\n✅日积月累\n❗️掌握「凉州词三首」典故（P9）\n❗️理解君子喻于义等《论语》警句（P34）\n❗️分类记忆十二生肖歇后语（P62）\n3️⃣抓阅读\n💡【阅读力是一切学习力的基础】\n二年级的时候，我还在为Molly70分的语文卷子抓狂到掉头发， 直到我那北大中文系的学霸闺蜜一巴掌拍醒我："阅读都不开窍，刷题有什么用？！"\n抱着试试看的心态，我开始带他死磕每天15分钟线上精读（是的！就洗漱前那点碎片时间！）结果一年后——\n🔹这个曾经看图写话憋不出两句的娃，居然啃完了20多本名著\n🔹 整理了2000条笔记，相当于自主整理出《名家写作秘籍》\n真心劝所有妈妈： 每天精准练15分钟"拆解-模仿-输出"，比周末泡2小时书店管用10倍！\n·\n🔥每个娃都有自己的节奏，找到适合娃的方法才是最关键的~\n#五年级语文 #五年级下学期 #提高孩子学习成绩  #家有小学生#辣妈育儿经</td>
+      <td>Monica妈妈🌱</td>
+      <td>1 天前 北京</td>
+      <td><a href="https://www.xiaohongshu.com/search_result/681a1cc4000000000c03ac5a?xsec_token=AB55O1dypEv39xcX757ULvcFMgkm7OlFNwq_hcJl6zGgg=&xsec_source=" target="_blank">https://www.xiaohongshu.com/search_result/681a1cc4000000000c03ac5a?xsec_token=AB55O1dypEv39xcX757ULvcFMgkm7OlFNwq_hcJl6zGgg=&xsec_source=</a></td>
+      <td>432</td>
+      <td>568</td>
+      <td>76</td>
+    </tr>
+    <tr>
+      <td>NaN</td>
+      <td>四年级小学生假期忙碌而又充实的一天vlog…</td>
+      <td>小糖果</td>
+      <td>编辑于 1 天前 浙江</td>
+      <td><a href="https://www.xiaohongshu.com/search_result/681893230000000021004bd0?xsec_token=ABOhE80sCjS8RDp-6XNzkNJNYlNcze7BVUr9vM7_7b0AM=&xsec_source=" target="_blank">https://www.xiaohongshu.com/search_result/681893230000000021004bd0?xsec_token=ABOhE80sCjS8RDp-6XNzkNJNYlNcze7BVUr9vM7_7b0AM=&xsec_source=</a></td>
+      <td>958</td>
+      <td>142</td>
+      <td>66</td>
+    </tr>
+    <tr>
+      <td>三下死磕阅读理解技巧，语文考试稳了</td>
+      <td>#语文阅读理解#小学阅读理解#小学语文基础知识#语文知识点#语文阅读理解答题技巧#三年级下册#三年级下册语文#小学语文#语文阅读理解万能公式#家长收藏孩子受益</td>
+      <td>左柚老师</td>
+      <td>5 天前 山东</td>
+      <td><a href="https://www.xiaohongshu.com/search_result/68147a180000000009038e92?xsec_token=ABbJVBeUBUycMPEO0_dpB9jBIkuo9YnZ6Cx6z0nFxxOUM=&xsec_source=" target="_blank">https://www.xiaohongshu.com/search_result/68147a180000000009038e92?xsec_token=ABbJVBeUBUycMPEO0_dpB9jBIkuo9YnZ6Cx6z0nFxxOUM=&xsec_source=</a></td>
+      <td>415</td>
+      <td>573</td>
+      <td>56</td>
+    </tr>
+  </tbody>
+</table>
+                </div>
+            </div>
+        </body>
+        </html>
+        
